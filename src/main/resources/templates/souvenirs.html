@@ -49,9 +49,11 @@
     <input type="submit" value="Sort souvenirs by date">
 </form>
 <br/>
-<form action="sort_souvenirs_by_year" method="get">
+<form action="show_souvenirs_by_year" method="get">
     <h4>Sort souvenirs by year</h4>
-    <input type="submit" value="Sort souvenirs by year">
+    <table th:field="s_date">Enter year</table>
+    <input type="text" name="date" id="s_date"><br/>
+    <input type="submit" value="Show">
 </form>
 
 <script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>

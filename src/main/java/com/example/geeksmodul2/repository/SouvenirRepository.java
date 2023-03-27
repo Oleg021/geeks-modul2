@@ -4,6 +4,7 @@ import com.example.geeksmodul2.model.Souvenir;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -15,10 +16,10 @@ public interface SouvenirRepository extends JpaRepository<Souvenir, Integer> {
     @Query(value = "select s from  Souvenir s order by s.date")
     List<Souvenir> sortByDate();
 
-    @Query(value = "select year(s.date) as year, s.name from Souvenir s" +
-            " group by year(s.date), s.name" +
-            " order by year(s.date) asc")
-    List<Souvenir> sortByYear();
+
+    @Query(value = "select s from Souvenir s where year(s.date) = ?1")
+    List<Souvenir> showByYear(int year);
+
 
 
 

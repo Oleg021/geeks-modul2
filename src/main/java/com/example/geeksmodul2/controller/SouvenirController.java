@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -95,13 +94,6 @@ public class SouvenirController {
         return "show_souvenirs_by_name_manufacture";
     }
 
-    /*@GetMapping("/show_all_souvenirs_by_year")
-    public String showAllByYear(Model model) {
-        List<Souvenir> souvenirs = souvenirRepository.findAll();
-        Map<Integer, String> map = souvenirService.getMapOfDates(souvenirs);
-        model.addAttribute("dates", map);
-        return "all_souvenirs_by_date";
-    }*/
 
     @GetMapping("/show_all_souvenirs_by_date")
     public String showAllByDate(Model model) {
@@ -110,11 +102,12 @@ public class SouvenirController {
         return "all_souvenirs_by_date";
     }
 
-    @GetMapping("/sort_souvenirs_by_year")
-    public String sortByYear(Model model) {
-        List<Souvenir> souvenirs  = souvenirRepository.sortByYear();
-        model.addAttribute("souvenir", souvenirs);
-        return "sort_by_year";
+
+    @GetMapping("/show_souvenirs_by_year")
+    public String showByYear(@RequestParam("date") int date, Model model) {
+        List<Souvenir> souvenirs = souvenirRepository.showByYear(date);
+        model.addAttribute("souvenirs", souvenirs);
+        return "show_by_year";
     }
 
 }

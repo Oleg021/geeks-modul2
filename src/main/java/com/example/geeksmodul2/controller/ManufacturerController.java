@@ -1,13 +1,10 @@
 package com.example.geeksmodul2.controller;
 
 import com.example.geeksmodul2.model.Manufacture;
-import com.example.geeksmodul2.model.Souvenir;
 import com.example.geeksmodul2.repository.ManufactureRepository;
-import com.example.geeksmodul2.repository.SouvenirRepository;
 import com.example.geeksmodul2.service.ManufactureService;
 import com.example.geeksmodul2.service.SouvenirService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

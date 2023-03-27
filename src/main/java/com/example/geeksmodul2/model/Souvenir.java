@@ -3,7 +3,7 @@ package com.example.geeksmodul2.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 import java.time.LocalDate;
 

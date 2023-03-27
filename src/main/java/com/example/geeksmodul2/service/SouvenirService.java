@@ -24,31 +24,4 @@ public class SouvenirService {
         souvenirRepository.save(souvenir);
     }
 
-    public Set<LocalDate> getLsitDate(List<Souvenir> souvenirs) {
-        Set<LocalDate> localDates = new HashSet<>();
-        for (Souvenir elem : souvenirs) {
-            localDates.add(elem.getDate());
-        }
-        return localDates;
-    }
-
-    public Map<Integer, List<Souvenir>> getMapOfDates(List<Souvenir> souvenirs) {
-        Map<Integer, List<Souvenir>> souvenirMap = new HashMap<>();
-        for (Souvenir elem : souvenirs) {
-            souvenirMap.put(elem.getDate().getYear(), souvenirs);
-        }
-        return souvenirMap;
-    }
-
-    public Map<Integer, Map<Integer, String>> getMapsOfDates(List<Souvenir> souvenirs) {
-        Map<Integer, Map<Integer, String>> souvenirMap = new HashMap<>();
-        Map<Integer, String> map = new HashMap<>();
-        for (Souvenir elem : souvenirs) {
-            map.put(elem.getId(), elem.getName());
-            souvenirMap.put(elem.getDate().getYear(), map);
-        }
-        return souvenirMap;
-    }
-
-
 }

@@ -14,9 +14,6 @@ public interface ManufactureRepository extends JpaRepository<Manufacture, Intege
 
     List<Manufacture> findBySouvenirs_PriceLessThan(Double price);
 
-
-
     List<Manufacture> findBySouvenirs_NameContainsAndSouvenirs_Date(String name, LocalDate date);
-
 
 }
