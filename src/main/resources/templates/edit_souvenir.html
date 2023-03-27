@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Souvenir</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<form th:action="@{/update_souvenir}" method="post" th:object="${souvenir}">
+  <input type="hidden" th:value="*{id}" name="id">
+  <label for="s_name">Name:</label>
+  <input type="text" id="s_name" th:field="*{name}"><br/>
+
+  <label for="s_requisites">Requisites:</label>
+  <input type="text" id="s_requisites" th:field="*{requisites}"><br/>
+
+  <label for="s_date">Date:</label>
+  <input type="text" id="s_date" th:field="*{date}"><br/>
+
+  <label for="s_price">Price:</label>
+  <input type="text" id="s_price" th:field="*{price}"><br/>
+
+  <input type="hidden" th:value="*{manufacture.getId()}" name="manufactureid">
+  <input type="submit" value="Update" class="btn btn-sm btn-primary">
+</form>
+
+
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

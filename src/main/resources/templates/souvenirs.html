@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Souvenirs</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<table id="souvenirs" class="table table-dark table-hover table-striped table-sm">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>requisites</th>
+        <th>date</th>
+        <th>price</th>
+        <th>manufacture_id</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="s : ${souvenirs}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.requisites}"></td>
+            <td th:text="${s.date}"></td>
+            <td th:text="${s.price}"></td>
+            <td th:text="${s.manufacture.id}"></td>
+            <td><a th:href="@{/edit_souvenir/{id}(id=${s.id})}" class="btn btn-sm btn-primary">Edit</a> </td>
+            <td><a th:href="@{/delete_souvenir/{id}(id=${s.id})}" class="btn btn-danger btn-sm">Delete</a> </td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="show_manufacturers_by_name_and_year_souvenir" method="get">
+    <h4>Show manufacturers by name and year of souvenir</h4>
+    <label for="m_name">Name:</label>
+    <input type="text" name="name" id="m_name"><br/>
+    <label for="m_date">Date:</label>
+    <input type="text" name="date" id="m_date"><br/>
+    <input type="submit" value="Show">
+</form>
+<br/>
+<form action="show_all_souvenirs_by_date" method="get">
+    <h4>Sort souvenirs by date</h4>
+    <input type="submit" value="Sort souvenirs by date">
+</form>
+<br/>
+<form action="sort_souvenirs_by_year" method="get">
+    <h4>Sort souvenirs by year</h4>
+    <input type="submit" value="Sort souvenirs by year">
+</form>
+
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

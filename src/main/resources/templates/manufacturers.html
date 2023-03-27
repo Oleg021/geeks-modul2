@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturers</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<table id="manufacturers" class="table table-dark table-hover table-striped table-sm">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>country</th>
+        <th>souvenirs</th>
+        <th>edit</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m :${manufactures}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.name}"></td>
+        <td th:text="${m.country}"></td>
+        <td><a th:href="@{/manufacture_souvenirs/{id}(id=${m.id})}" class="btn btn-primary btn-sm">Show Souvenir</a></td>
+        <td><a th:href="@{/edit_manufacture/{id}(id=${m.id})}" class="btn btn-sm btn-primary">Edit</a> </td>
+        <td><a th:href="@{/delete_manufacture/{id}(id=${m.id})}" class="btn btn-danger btn-sm">Delete</a> </td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="add_manufacture" method="post">
+    <label for="manufacture_name">Name:</label>
+    <input type="text" name="name" id="manufacture_name"><br/>
+    <label for="manufacture_country">Country:</label>
+    <input type="text" name="country" id="manufacture_country"><br/>
+    <input type="submit" value="Add" class="btn btn-primary">
+</form>
+
+<form action="sort_by_price_less" method="get">
+    <h4>Filter manufacture by price</h4>
+    <label for="souvenir_price">Price:</label>
+    <input type="text" name="price" id="souvenir_price">
+    <input type="submit" value="Show">
+</form>
+
+<form action="show_by_country" method="get">
+    <h4>Show souvenirs by entered country</h4>
+    <label for="manufacture_country">Country:</label>
+    <input type="text" name="country" id="m_country">
+    <input type="submit" value="Show">
+</form>
+
+<form action="show_by_name_manufacture" method="get">
+    <h4>Show souvenirs by entered name of manufacture</h4>
+    <label for="m_name">Name:</label>
+    <input type="text" name="name" id="m_name">
+    <input type="submit" value="Show">
+</form>
+
+
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

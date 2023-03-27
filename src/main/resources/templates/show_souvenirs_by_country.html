@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Souvenirs by country</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<h2>Souvenirs by country manufacture</h2>
+<table id="manufacture_by_price" class="table table-dark table-hover table-striped table-sm">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>requisites</th>
+    <th>date</th>
+    <th>price</th>
+    <th>manufacture name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="s : ${souvenirs}">
+    <td th:text="${s.id}"></td>
+    <td th:text="${s.name}"></td>
+    <td th:text="${s.requisites}"></td>
+    <td th:text="${s.date}"></td>
+    <td th:text="${s.price}"></td>
+    <td th:text="${s.manufacture.getName()}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href="../manufacturers" class="btn btn-primary btn-sm">back</a>
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

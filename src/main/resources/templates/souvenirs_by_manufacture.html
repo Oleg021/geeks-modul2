@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Souvenirs by manufacture</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+  <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+  <h1 th:text="${manufacture.name}"></h1>
+<table class="table table-dark table-hover table-striped table-sm">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>requisites</th>
+      <th>date</th>
+      <th>price</th>
+      <th>manufacture id</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr th:each="s : ${manufacture.souvenirs}">
+    <td th:text="${s.id}"></td>
+    <td th:text="${s.name}"></td>
+    <td th:text="${s.requisites}"></td>
+    <td th:text="${s.date}"></td>
+    <td th:text="${s.price}"></td>
+    <td th:text="${s.manufacture.getId()}"></td>
+    <td><a th:href="@{/edit_souvenir/{id}(id=${s.id})}" class="btn btn-sm btn-primary">Edit</a> </td>
+    <td><a th:href="@{/delete_souvenir/{id}(id=${s.id})}" class="btn btn-danger btn-sm">Delete</a> </td>
+  </tr>
+  </tbody>
+</table>
+
+<form action="/add_souvenir" method="post">
+  <input type="hidden" th:value="${manufacture.id}" name="manufacture_id">
+  <label for="s_name">Name:</label>
+  <input type="text" name="name" id="s_name"><br/>
+  <label for="s_req">Requisites:</label>
+  <input type="text" name="requisites" id="s_req"><br/>
+  <label for="s_date">Date:</label>
+  <input type="text" name="date" id="s_date"><br/>
+  <label for="s_price">Price:</label>
+  <input type="text" name="price" id="s_price"><br/>
+  <input type="submit" value="Add">
+</form>
+
+  <a href="../manufacturers" class="btn btn-primary btn-sm">back</a>
+  <script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+  <script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

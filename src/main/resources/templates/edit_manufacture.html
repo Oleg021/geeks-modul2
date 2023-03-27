@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit manufacture</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<form th:action="@{/update_manufacture}" method="post" th:object="${manufacture}">
+  <input type="hidden" th:value="*{id}" name="id">
+  <label for="m_name">Name:</label>
+  <input type="text" id="m_name" th:field="*{name}"><br/>
+  <label for="m_country">Country:</label>
+  <input type="text" id="m_country" th:field="*{country}"><br/>
+  <input type="submit" value="Update" class="btn btn-sm btn-primary">
+</form>
+
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>

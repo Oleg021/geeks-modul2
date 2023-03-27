@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacture by price</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<h2>Manufactory the price of souvenirs which is less than you entered</h2>
+<table id="manufacture_by_price" class="table table-dark table-hover table-striped table-sm">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>country</th>
+            <th>souvenirs</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m : ${manufacture}">
+        <td th:text="${m.id}"></td>
+       <td th:text="${m.name}"></td>
+       <td th:text="${m.country}"></td>
+        <td>
+            <table class="table table-light table-hover table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="s : ${m.souvenirs}">
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.name}"></td>
+                    <td th:text="${s.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="../manufacturers" class="btn btn-primary btn-sm">back</a>
+
+<script th:src="@{/webjars/jquery/3.6.3/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.1-1/umd/popper.min.js}"></script>
+</body>
+</html>
